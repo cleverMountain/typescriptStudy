@@ -68,6 +68,6 @@ function infiniteLoop(): never {
 
 // 断言
 let someValue: any = "this is a string";
-
+// 1.值 as 类型     2.<类型>值         
 let strLength: number = (someValue as string).length;
 console.log(strLength)

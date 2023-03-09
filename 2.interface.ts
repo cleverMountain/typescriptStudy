@@ -101,3 +101,27 @@ interface ITuple {
   length: 2 | 1
 }
 const arr12: ITuple = [123]
+
+
+
+// 类型别名
+interface A {}
+interface B {}
+interface c extends A,B{}  //  interface c extends D{}
+type D = A & B // 交叉类型    =》 type D = A | B 联合类型
+
+
+
+// 混合类型，一个对象同时做函数和对象使用
+interface Counter {
+  (start: number): string;
+  interval: number;
+  reset(): void;
+}
+function getName():Counter {
+  let counter = function(start:number) {} as Counter;
+  counter.interval = 123;
+  counter.reset = () => {};
+  return counter
+  
+}
