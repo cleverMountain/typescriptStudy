@@ -14,7 +14,7 @@ let arr22: Array<string> = ['2']
 
 
 // 元组
-let tuple: (number | string)[] = [1, '2']
+let tuple: [number, string] = [1, '2']
 
 
 // 枚举,相当于策略模式
@@ -29,8 +29,8 @@ console.log(colorName)
 
 declare function create(o: object | null): void;
 
-create({ prop: 0 }); // OK
-create(null); // OK null是任意类型的子类型
+// create({ prop: 0 }); // OK
+// create(null); // OK null是任意类型的子类型
 
 // create(42); // Error
 // create("string"); // Error

@@ -52,25 +52,18 @@ let test1 = (a: number, b: number): number => {
 interface ILikeArr {
   length: number
 }
+// 定义数组接口
 interface IArr extends ILikeArr {
   [index: number]: number | string
 }
-let arr11: IArr = [1, 2]
-
-
-
-// 类
-class Greeter {
-  greeting: string;
-  constructor(message: string) {
-    this.greeting = message;
-  }
-  greet(a: string): string {
-    return "Hello, " + this.greeting;
-  }
+let arr11: IArr = {
+  0: 1,
+  1: 2,
+  length: 2
 }
 
-let greeter = new Greeter("world");
+
+
 
 
 type User={
@@ -87,3 +80,24 @@ const userList:User[]=[
 ]
 
 
+// 继承
+
+interface IA {
+  number: number
+}
+interface IB extends IA {
+  age: number
+}
+const a111: IB = {
+  number: 1,
+  age: 2
+}
+
+
+// 接口描述元素
+interface ITuple {
+  0: number,
+  1?: string,
+  length: 2 | 1
+}
+const arr12: ITuple = [123]
