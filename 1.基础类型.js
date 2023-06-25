@@ -18,8 +18,8 @@ var Color;
 })(Color || (Color = {}));
 var colorName = Color['Blue'];
 console.log(colorName);
-create({ prop: 0 }); // OK
-create(null); // OK null是任意类型的子类型
+// create({ prop: 0 }); // OK
+// create(null); // OK null是任意类型的子类型
 // create(42); // Error
 // create("string"); // Error
 // create(false); // Error
@@ -44,5 +44,6 @@ function infiniteLoop() {
 }
 // 断言
 var someValue = "this is a string";
+// 1.值 as 类型     2.<类型>值         
 var strLength = someValue.length;
 console.log(strLength);
