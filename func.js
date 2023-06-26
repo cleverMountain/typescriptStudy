@@ -1,19 +1,20 @@
+"use strict";
 // 函数注解
-function tset(x, y) {
+function tset1(x, y) {
     return x + y;
 }
-var test11 = function (x, y) {
-    var a = 1;
+let test1111 = function (x, y) {
+    let a = 1;
     return x + y + a;
 };
-var test111 = function (x, y) {
-    return function (x, y) { return x + y; };
+let test11111 = (x, y) => {
+    return (x, y) => x + y;
 };
-var test12 = function (x, y) { return x + y; };
-var test13 = function (x, y) { return x + y; };
-var funcA = function (data) {
+let test112 = (x, y) => x + y;
+let test113 = (x, y) => x + y;
+const funcA1 = (data) => {
     return Object.prototype.toString.call(data) == '[object Array]' ? true : false;
 };
-var funcB = function (data) {
+const func1B = (data) => {
     return Object.prototype.toString.call(data) == '[object Array]' ? true : false;
 };

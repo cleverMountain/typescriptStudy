@@ -1,13 +1,14 @@
-var ar = [1, 2, 3];
-var fb = function (arr) {
-    var newA = [];
-    for (var i = 0; i < arr.length; i++) {
+"use strict";
+let ar = [1, 2, 3];
+const fb = (arr) => {
+    let newA = [];
+    for (let i = 0; i < arr.length; i++) {
         newA.push(i);
     }
     return newA;
 };
 fb(ar);
-var users = [
+let users = [
     { id: 1, parentId: 0, name: "菜单1" },
     { id: 2, parentId: 0, name: "菜单2" },
     { id: 3, parentId: 0, name: "菜单3" },
@@ -23,16 +24,16 @@ var users = [
     { id: 13, parentId: 12, name: "菜单13" },
     { id: 14, parentId: 13, name: "菜单14" },
 ];
-var obj111 = {
+let obj111 = {
     name: 'li',
     msg: {
         height: 1.8,
         bobby: [1, 2, 3]
     },
-    eat: [4, 5, 6]
+    eat: [4, 5, 6],
 };
-var funccc = function (obj, target) {
-    for (var k in obj) {
+const funccc = (obj, target) => {
+    for (let k in obj) {
         if (typeof obj[k] !== 'object' && typeof obj[k] !== null) {
             target[k] = obj[k];
         }
