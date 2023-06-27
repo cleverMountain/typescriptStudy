@@ -38,7 +38,7 @@ const a111 = {
     age: 2
 };
 const arr12 = [123];
-function getName() {
+function getName1() {
     let counter = function (start) { };
     counter.interval = 123;
     counter.reset = () => { };

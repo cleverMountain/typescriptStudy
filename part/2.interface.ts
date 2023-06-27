@@ -118,7 +118,7 @@ interface Counter {
   interval: number;
   reset(): void;
 }
-function getName():Counter {
+function getName() :Counter {
   let counter = function(start:number) {} as Counter;
   counter.interval = 123;
   counter.reset = () => {};

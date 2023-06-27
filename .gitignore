@@ -1,2 +1,4 @@
 .vscode
 webpack/node_modules
+node_modules
+ts-pro/node_modules
