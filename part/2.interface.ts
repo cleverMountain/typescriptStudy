@@ -7,7 +7,8 @@ interface IObj {
   nest: {
     [propName: string]: any; // 其他属性
   },
-  [propName: string]: any; // 其他属性
+  [propName: string]: any, // 其他属性
+  age: number
 }
 
 let obj: IObj = {
@@ -17,7 +18,8 @@ let obj: IObj = {
   nest: {
     f: 1
   },
-  E: 2
+  E: 2,
+  age: 20
 }
 
 
