@@ -1,0 +1,1 @@
+export const aaa: string = '你好'
