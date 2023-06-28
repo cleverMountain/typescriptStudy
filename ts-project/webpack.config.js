@@ -6,6 +6,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[hash:8].js',
+    environment: {
+      arrowFunction: false, // 不使用箭头函数
+      const: false // 不使用const
+    }
   },
   // 可以引入ts模块
   resolve: {
