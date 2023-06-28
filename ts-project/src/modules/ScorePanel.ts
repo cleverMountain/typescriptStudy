@@ -6,9 +6,9 @@ class ScorePanel {
   upScore: number = 10
   scoreEle: HTMLElement | null
   levelEle: HTMLElement | null;
-  constructor ( sSeletor:string, lSeletor: string, maxLevel: number, upScore: number) {
-    this.scoreEle = document.querySelector(sSeletor)as HTMLInputElement | null
-    this.levelEle = document.querySelector(lSeletor)as HTMLInputElement | null
+  constructor (maxLevel: number = 10, upScore: number = 10) {
+    this.scoreEle = document.querySelector('scpre')as HTMLInputElement | null
+    this.levelEle = document.querySelector('level')as HTMLInputElement | null
     this.maxLevel = maxLevel
     this.upScore = upScore
   }

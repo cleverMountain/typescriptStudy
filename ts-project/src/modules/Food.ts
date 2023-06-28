@@ -3,7 +3,7 @@ class Food {
   // 定义元素
   foodEle: HTMLElement | null
   constructor(el: string) {
-    this.foodEle = document.querySelector(el) as HTMLInputElement | null;
+    this.foodEle = document.querySelector('#food') as HTMLInputElement | null;
     // this.foodEle = document.getElementById('string') || null
   }
   // 获取食物坐标
