@@ -31,7 +31,14 @@ body {
       // height: 10px;
       // background-color: #000;
       // border: 1px solid @bg-color;
-      position: absolute;
+      // position: absolute;
+      &>div {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+        border: 1px solid @bg-color;
+        position: absolute;
+      }
     }
     .food {
       width: 10px;
@@ -42,13 +49,14 @@ body {
       left: 20px;
       top: 40px;
     }
-    .head {
-      width: 10px;
-      height: 10px;
-      background-color: #000;
-      border: 1px solid @bg-color;
-      position: absolute;
-    }
+
+    // .head1 {
+    //   width: 10px;
+    //   height: 10px;
+    //   background-color: #000;
+    //   border: 1px solid @bg-color;
+    //   position: absolute;
+    // }
   }
   #score-panel {
     width: 314px;

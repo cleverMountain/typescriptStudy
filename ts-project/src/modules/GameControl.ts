@@ -35,7 +35,7 @@ class GameControl {
     // 获取位置
     let snakeX = this.snake.getX() as number,
       snakeY = this.snake.getY() as number
-    console.log(this.direction)
+
     switch (this.direction) {
       case 'ArrowUp':
         snakeY = snakeY - 10
@@ -61,7 +61,7 @@ class GameControl {
       alert(e)
       this.live = false
     }
-
+  
     if (this.timer) {
       window.clearTimeout(this.timer)
     }
