@@ -10,25 +10,52 @@ class Snake {
   }
   // 获取蛇坐标
   getX(): (number | undefined) {
-    return this.snakeContain?.offsetLeft
+    return this.snakeHead?.offsetLeft
   }
   getY(): (number | undefined) {
-    return this.snakeContain?.offsetTop
+    return this.snakeHead?.offsetTop
   }
   // 设置位置
-  setX (value: number) {
-    if (this.snakeContain) {
-      this.snakeContain.style.left = value + 'px'
+  setX(value: number) {
+    this.checkGameOver(value)
+    if (this.snakeHead) {
+      this.snakeHead.style.left = value + 'px'
     }
+    this.moveBody()
   }
-  setY (value: number) {
-    if (this.snakeContain) {
-      this.snakeContain.style.top = value + 'px'
+  setY(value: number) {
+    this.checkGameOver(value)
+    if (this.snakeHead) {
+      this.snakeHead.style.top = value + 'px'
     }
+    this.moveBody()
   }
   // 添加身体
-  addBody () {
-    this.snakeContain?.insertAdjacentHTML("beforeend", "<div></div>")
+  addBody() {
+    this.snakeContain?.insertAdjacentHTML("beforeend", "<div class='head'></div>")
+ 
+  }
+  // 检测撞墙
+  checkGameOver(value: number) {
+    if (value < 0 || value > 300) {
+      throw new Error('撞墙了')
+    }
+  }
+  // 身体移动
+  moveBody() {
+
+    for (let i = (this.body?.length) as number - 1; i as number > 0; (i as number)--) {
+      if (this.body) {
+        console.log(i, this.body)
+        let x = (this.body[(i as number) - 1] as HTMLElement).offsetLeft
+        let y = (this.body[(i as number) - 1] as HTMLElement).offsetTop;
+        // console.log((this.body as HTMLElement)
+       console.log(this.body, i);
+        (this.body[(i as number)] as HTMLElement).style.left = x + 'px';
+        (this.body[(i as number)] as HTMLElement).style.top = y + 'px'
+      }
+
+    }
   }
 }
 

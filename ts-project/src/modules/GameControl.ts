@@ -8,6 +8,8 @@ class GameControl {
   snake: Snake
   scorePanel: ScorePanel
   direction: string = '' // 移动方向
+  timer: number = 0
+  live: boolean = true
   constructor() {
     this.food = new Food('')
     this.snake = new Snake('')
@@ -24,22 +26,22 @@ class GameControl {
    */
   keyDownHandler(e: KeyboardEvent) {
     // 检查按键是否合法
-    console.log(e)
+
     this.direction = e.key
-    this.run()
+    this.live && this.run()
   }
   // 蛇移动
   run() {
     // 获取位置
     let snakeX = this.snake.getX() as number,
       snakeY = this.snake.getY() as number
-      console.log(this.direction)
+    console.log(this.direction)
     switch (this.direction) {
       case 'ArrowUp':
         snakeY = snakeY - 10
         break
       case 'ArrowDown':
-         snakeY += 10
+        snakeY += 10
         break
       case 'ArrowLeft':
         snakeX = snakeX - 10
@@ -50,9 +52,32 @@ class GameControl {
       default:
         break
     }
-    console.log(snakeY, snakeX)
-    this.snake.setX(snakeX)
-    this.snake.setY(snakeY)
+    this.cheeckEat(snakeX, snakeY)
+    try {
+      this.snake.setX(snakeX)
+      this.snake.setY(snakeY)
+    } catch (e) {
+      console.log(e)
+      alert(e)
+      this.live = false
+    }
+
+    if (this.timer) {
+      window.clearTimeout(this.timer)
+    }
+    if (this.live) {
+      this.timer =  window.setTimeout(this.run.bind(this), 300);
+    }
+
+  }
+  cheeckEat(x: number, y:number) {
+    const foodX = this.food.getX()
+    const foodY = this.food.getY()
+    if (x === foodX && y === foodY) {
+      console.log('吃法哦')
+      this.snake.addBody()
+      this.food.changePos()
+    }
   }
 }
 
