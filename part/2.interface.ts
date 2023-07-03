@@ -68,7 +68,7 @@ let arr11: IArr = {
 
 
 
-type User={
+interface User {
   id:number,
   name:string,
   age:number,
