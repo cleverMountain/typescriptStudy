@@ -19,14 +19,10 @@ module.exports = {
       {
         test: /\.vue$/,
         use: ['vue-loader'],
-        // include: /(src)/,
       },
+ 
       {
-        // test: '/.ts$/',
-        // use: ['ts-loader'],
-        // exclude: '/node_modules/',
-        // test: /\.ts$/,
-        test: '/\.ts$/',
+        test: /\.ts$/,
         use: [
           {
             // 加载器
@@ -42,21 +38,29 @@ module.exports = {
                     "targets": "> 0.25%, not dead" // 浏览器支持范围
                   }
                 ],
-                [
-                  "@babel/preset-typescript",
-                  {
-                    allExtensions: true, // 支持所有文件扩展名，否则在vue文件中使用ts会报错
-                  },
-                ]
+                // [
+                //   "@babel/preset-typescript",
+                //   {
+                //     allExtensions: true, // 支持所有文件扩展名，否则在vue文件中使用ts会报错
+                //   },
+                // ]
               ]
             }
           },
-          // '@babel/preset-typescript',
-          'ts-loader'
+          {
+            loader: 'ts-loader',
+            options: {
+              // 指定特定的ts编译配置，为了区分脚本的ts配置
+              // configFile: path.resolve(__dirname, './tsconfig.json'),
+              // 对应文件添加个.ts或.tsx后缀
+              appendTsSuffixTo: [/\.vue$/],
+              // transpileOnly: true // 关闭类型检测，即值进行转译
+            },
+          }
         ],
-        exclude: '/node_modules/'
-      }
-
+        exclude: '/node_modules/',
+        
+      },
     ]
   },
   plugins: [
