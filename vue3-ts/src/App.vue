@@ -14,7 +14,7 @@ interface Onav {
   name: string,
   id: number
 }
-let a: string = 1
+let a: string = '1'
 console.log(a)
 const nav = reactive([
   {

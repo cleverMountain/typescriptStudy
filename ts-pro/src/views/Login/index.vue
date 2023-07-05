@@ -49,7 +49,7 @@ interface FormState {
 }
 const formState = reactive<FormState>({
   username: "admin",
-  password: "123456",
+  password: '123456',
   remember: true,
 });
 const router = useRouter()
