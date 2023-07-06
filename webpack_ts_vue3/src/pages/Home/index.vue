@@ -6,17 +6,12 @@
         v-for="nav in navs"
         :key="nav.id"
         :class="curNav === nav.id ? 'active-nav' : ''"
-        @click="
-          curNav = nav.id;
-          curNavName = nav.name;
-          router.push(nav.router)
-        "
+        @click="changeRouter(nav)"
       >
         {{ nav.name }}
       </div>
     </div>
     <div class="content">
-
       <div class="header">{{ curNavName }}</div>
       <div class="body">
         <router-view></router-view>
@@ -26,38 +21,53 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue";
-import { useRouter } from "vue-router"
+import { ref, reactive, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-const router = useRouter()
 interface Nav {
   name: string;
   id: number;
-  router: string
+  path: string;
 }
+const router = useRouter();
 const navs: Nav[] = reactive([
   {
     name: "商品",
     id: 1,
-    router: '/shopping'
+    path: "/shopping",
   },
   {
     name: "购物车",
     id: 2,
-    router: '/cart'
+    path: "/cart",
   },
   {
     name: "我的",
     id: 3,
-    router: 'mine'
+    path: "/mine",
   },
 ]);
 const curNav = ref<number>(1);
 const curNavName = ref<string>("商品");
-
-// setTimeout(() => {
-//   router.push('/mine')
-// }, 1000)
+const curPage = ref<Nav>(navs[0]);
+const changeRouter = (nav: Nav): void => {
+  localStorage.setItem("curPage", JSON.stringify(nav));
+  const { name, id, path } = nav;
+  curPage.value = nav;
+  curNav.value = id;
+  curNavName.value = name;
+  router.push(path);
+};
+const firstUoload = () => {
+  const cur: (string | null) = localStorage.getItem("curPage");
+  if (cur) {
+    curPage.value = JSON.parse(cur);
+  }
+  changeRouter(curPage.value);
+};
+onMounted(() => {
+  firstUoload();
+});
 </script>
 
 <style scoped lang="less">

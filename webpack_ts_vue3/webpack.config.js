@@ -77,6 +77,7 @@ module.exports = {
     }),
     new vueLoader.VueLoaderPlugin(),
   ],
+  devtool: 'eval-cheap-source-map',
   devServer: {
     open: true,
     hot: true,
