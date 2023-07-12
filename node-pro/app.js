@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // @ts-ignore
 app.use('/user',userRouter)
 // @ts-ignore
-app.listen(8080, () => {
-  console.log('服务在http://127.0.0.1:8080')
+app.listen(8080, '192.168.191.1', () => {
+  console.log('服务在http://192.168.191.1:8080')
 })
 

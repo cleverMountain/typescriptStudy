@@ -45,13 +45,20 @@ module.exports = {
                     "targets": "> 0.25%, not dead" // 浏览器支持范围
                   }
                 ],
+
+
                 // [
                 //   "@babel/preset-typescript",
                 //   {
                 //     allExtensions: true, // 支持所有文件扩展名，否则在vue文件中使用ts会报错
                 //   },
                 // ]
-              ]
+              ],
+              // "plugins": [
+              //   [
+              //     ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es", "style": "css" }] // `style: true` 会加载 less 文件
+              //   ]
+              // ]
             }
           },
           {
@@ -66,12 +73,12 @@ module.exports = {
           }
         ],
         exclude: '/node_modules/',
-        
+
       },
     ]
   },
   plugins: [
-    
+
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html')
     }),

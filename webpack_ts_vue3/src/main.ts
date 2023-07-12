@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import $http from "./utils/http/index"
+import ant from "ant-design-vue"
+import 'ant-design-vue/dist/antd.css'
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(ant).mount('#app')
   
 
 
-$http.post('user/login?uname=sdsa')
