@@ -56,6 +56,7 @@ const formState = reactive<FormState>({
 });
 const onFinish = (values: FormState): void => {
   console.log("Success:", values);
+   router.push('/home')
 };
 
 const router = useRouter()
