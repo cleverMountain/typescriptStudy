@@ -25,7 +25,7 @@
     </div>
     <template v-if="nav.children && nav.children.length > 0 && nav.expand">
       <div class="son-nav">
-        <Nav @changeFatherNav="changeFatherNav" :navs="nav.children"></Nav>
+        <Nav @changeFatherNav="changeFatherNav" :navs="nav.children" :curNav="curNav"></Nav>
       </div>
     </template>
   </div>
@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import Nav from "../Nav/index.vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const emit = defineEmits(['changeFatherNav'])
 interface Nav {
@@ -48,8 +48,18 @@ const props = defineProps({
     type: Array,
     default: [],
   },
+  curNav: {
+    type: Object,
+    default: {
+      id: 1,
+      name: '1',
+
+    }
+  }
 });
-const curNavId = ref<number>(1);
+
+const curNavId = ref<number>(props.curNav.id);
+const curNav = ref(props.curNav)
 const expand = (nav: Nav): void => {
   nav.expand = !nav.expand;
 };
@@ -60,8 +70,15 @@ const changeNav = (nav: Nav): void => {
 };
 const changeFatherNav = (nav: Nav):void => {
   console.log(curNavId.value)
-  curNavId.value = 100
+  // curNavId.value = 100
+  emit('changeFatherNav', nav)
 }
+watch(() => props.curNav, (val) => {
+  curNavId.value = val.id
+  curNav.value = val
+}, {
+  deep: true
+})
 </script>
 
 <style lang="less" scoped>

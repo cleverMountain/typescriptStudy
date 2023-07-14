@@ -10,7 +10,7 @@
       >
         {{ nav.name }}
       </div> -->
-      <Nav :navs="navs"></Nav>
+      <Nav @changeFatherNav="changeFatherNav" :navs="navs" :curNav="curNav"></Nav>
     </div>
     <div class="content">
       <div class="header">{{ curNavName }}</div>
@@ -53,6 +53,15 @@ const navs: Nav[] = reactive([
     name: "购物车",
     id: 2,
     path: "/cart",
+        expand: true,
+    children: [
+      {
+        name: "购物2",
+        id: 5,
+        path: "/shopping/shopping1",
+        expand: false
+      },
+    ],
   },
   {
     name: "我的",
@@ -60,24 +69,26 @@ const navs: Nav[] = reactive([
     path: "/mine",
   },
 ]);
-const curNav = ref<number>(1);
-const curNavName = ref<string>("商品");
-const curPage = ref<Nav>(navs[0]);
+const curNav = ref<Nav>(navs[0]);
+// const curNavName = ref<string>("商品");
+// const curPage = ref<Nav>(navs[0]);
 const changeRouter = (nav: Nav): void => {
   localStorage.setItem("curPage", JSON.stringify(nav));
   const { name, id, path } = nav;
-  curPage.value = nav;
-  curNav.value = id;
-  curNavName.value = name;
+  // curPage.value = nav;
+  // curNavName.value = name;
   router.push(path);
 };
 const firstUoload = () => {
   const cur: string | null = localStorage.getItem("curPage");
   if (cur) {
-    curPage.value = JSON.parse(cur);
+    // curPage.value = JSON.parse(cur);
   }
-  changeRouter(curPage.value);
+  // changeRouter(curPage.value);
 };
+const changeFatherNav = (nav: Nav): void => {
+  curNav.value = nav
+}
 onMounted(() => {
   firstUoload();
 });
